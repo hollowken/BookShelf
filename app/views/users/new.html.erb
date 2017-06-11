@@ -1,0 +1,29 @@
+<div class="signup">
+  <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          Не получилось зарегистрироваться:
+        </h2>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+  <h1>Регистрация</h1>
+  <%= form_for @user do |f| %>
+      <div class="field">
+        <%= f.label 'Ник' %><br>
+        <%= f.text_field :nick, :required => true %><br>
+        <%= f.label 'Email' %><br>
+        <%= f.text_field :email, :required => true %><br>
+        <%= f.label 'Пароль' %><br>
+        <%= f.password_field :password, :required => true %><br>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Зарегистрироваться' %>
+      </div>
+  <% end %>
+</div>

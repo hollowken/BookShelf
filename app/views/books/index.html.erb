@@ -1,0 +1,26 @@
+<div class="sort">
+  <div class="by_genre">
+    <h3>Выбрать определённый жанр: </h3>
+    <%= select_tag('genres', options_for_select([['Все']] + genres, @genre), class: 'genreFilter') %>
+  </div>
+  <div class="find_by_name">
+    <h3>Поиск по названию:</h3>
+    <input type="text" name="find" class="nameFilter">
+  </div>
+</div>
+
+<div class="books">
+  <% @books.each do |book| %>
+      <div class="book">
+        <h2><%= book.name %></h2>
+        <h4><%= book.author %></h4>
+        <p><i><%= book.genre %></i></p>
+        <p><img src="<%= book.img %>" alt=""></p>
+        <p class="note"><%= book.note %></p>
+        <div class="action-book">
+          <%= link_to 'Изменить', edit_book_path(book) %>
+          <%= link_to 'Удалить', book_path(book), method: :delete %>
+        </div>
+      </div>
+  <% end %>
+</div>

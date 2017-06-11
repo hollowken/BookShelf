@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BookShelf</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<% if current_user %>
+    <div class="top-nav">
+      <ul class="left-nav">
+        <a href="<%= books_path %>"><li>Моя полка</li></a>
+        <a href="<%= new_book_path %>"><li>Добавить книгу</li></a>
+      </ul>
+      <ul class="right-nav">
+        <li><%= current_user.nick %></li>
+        <li><%= link_to 'Выйти', logout_path, method: 'delete' %></li>
+      </ul>
+    </div>
+<% end %>
+
+<%= yield %>
+</body>
+</html>

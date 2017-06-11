@@ -1,0 +1,11 @@
+<div class="login">
+  <h1>BookSelf</h1>
+  <h2>Ваша персональная книжная полка.</h2>
+
+  <%= form_for(:session, url: login_path) do |f| %>
+      <%= f.email_field :email, :placeholder => 'Email', :required => true %>
+      <%= f.password_field :password, :placeholder => 'Пароль', :required => true %>
+      <%= f.submit 'Войти' %>
+      <a href="/signup"><input type="button" value="Регистрация"/></a>
+  <% end %>
+</div>

@@ -1,0 +1,32 @@
+<%= form_for @book do |f| %>
+
+    <% if @book.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            Не получилось сохранить книгу:
+          </h2>
+          <ul>
+            <% @book.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label 'Автор' %><br>
+      <%= f.text_field :author, :required => true %><br>
+      <%= f.label 'Название книги' %><br>
+      <%= f.text_field :name, :required => true %><br>
+      <%= f.label 'Жанр' %><br>
+      <%= f.select(:genre, genres) %><br>
+      <%= f.label 'Заметка о книге' %><br/>
+      <%= f.text_area :note %><br/>
+      <%= f.label 'Обложка' %><br/>
+      <%= f.file_field :img, accept: 'image/png,image/jpeg', :required => true %><br/>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Сохранить' %>
+    </div>
+    <%= link_to 'Вернуться', books_path %>
+<% end %>
